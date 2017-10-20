@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+          package="cn.xeon.moduleb"
+>
+
+    <application
+    >
+        <activity android:name="cn.xeon.moduleb.ModuleBActivity" >
+        </activity>
+    </application>
+
+</manifest>

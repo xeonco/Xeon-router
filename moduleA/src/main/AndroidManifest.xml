@@ -1,0 +1,13 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+          package="cn.xeon.router.modulea"
+>
+
+    <application
+    >
+
+        <activity android:name="cn.xeon.router.modulea.RouterAActivity" >
+        </activity>
+    </application>
+
+</manifest>

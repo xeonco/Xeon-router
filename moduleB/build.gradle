@@ -1,0 +1,37 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode  rootProject.ext.versionCode
+        versionName  rootProject.ext.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    provided fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${espressocoreVersion}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile "com.android.support:appcompat-v7:${supportLibrariesVersion}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    provided project(':router')
+    provided "com.google.auto.service:auto-service:${googleAutoVersion}"
+    provided "org.apache.commons:commons-lang3:${commonslang3Version}"
+    provided "org.apache.commons:commons-collections4:${commonscollections4Version}"
+    provided "com.squareup:javapoet:${javaPoetVersion}"
+    testCompile 'junit:junit:4.12'
+}
