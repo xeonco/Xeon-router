@@ -10,7 +10,6 @@ import java.util.List;
  *  router hub
  * @author LinZaixiong
  * @version 1.0
- * @created 19-10-2017 10:56:10
  */
 public class RouterHub {
 
@@ -25,9 +24,10 @@ public class RouterHub {
 
 
 	/**
-	 * 设置提供器
+	 * supplier setter
 	 *
-	 * @param supply   提供器
+	 * @param supply   supplier
+	 * @return self
 	 */
 	public RouterHub setSupply(RouterSupply supply){
 		m_RouterSupply = supply;
@@ -35,9 +35,10 @@ public class RouterHub {
 	}
 
 	/**
-	 * 添加 Cable , 尽量不添加多，让其最快速找到
+	 * add cable
 	 * 
 	 * @param cable
+	 * @return self
 	 */
 	public RouterHub addCable(RouterCable cable){
 		if(cable == null)
@@ -50,9 +51,10 @@ public class RouterHub {
 	}
 
 	/**
-	 * 删除cable
+	 *  delete cable
 	 * 
 	 * @param cable    cable
+	 * @return self
 	 */
 	public RouterHub removeCable(RouterCable cable){
 
@@ -65,7 +67,8 @@ public class RouterHub {
 	}
 
 	/**
-	 * 清除cable
+	 *  clear cable
+	 * @return self
 	 */
 	public RouterHub clearCables(){
 		if(m_RouterCables != null){
@@ -75,9 +78,10 @@ public class RouterHub {
 	}
 
 	/**
-	 * 添加子child RouterHub， 尽量不添加多，让其快速找到hub
+	 * add child router hub
 	 * 
-	 * @param hub    添加hub
+	 * @param hub    add hub
+	 * @return self
 	 */
 	public RouterHub addChildRouterHub(RouterHub hub){
 
@@ -93,9 +97,10 @@ public class RouterHub {
 	}
 
 	/**
-	 * 删除子child Routerhub
+	 * delete child Routerhub
 	 * 
 	 * @param hub    router hub
+	 * @return self
 	 */
 	public RouterHub removeChildRouterHub(RouterHub hub){
 		if(m_ChildRouters != null){
@@ -109,7 +114,8 @@ public class RouterHub {
 	}
 
 	/**
-	 * 清除所有router hub,只清除自身的，不帮忙清除子的
+	 * clear all router hubs,only itself, not child
+	 * @return self
 	 */
 	public RouterHub clearChildRouterHub(){
 		if(m_ChildRouters != null){
@@ -121,13 +127,14 @@ public class RouterHub {
 	/**
 	 * cable plug into hub
 	 * 
-	 * @param url    url参数/Path参数
+	 * @param url    url param/Path param
+	 * @return self
 	 */
 	public RouterCableInfo plug(String url){
 
-		// 找模块
+		// find module
 		RouterCableInfo info = findCableInfo(url);
-		// 找不到模块，找子hub
+		// can't find module, find child router hub
 		if(info == null) {
 			info = findChildRouterCableInfo(url);
 		}
@@ -136,9 +143,9 @@ public class RouterHub {
 	}
 
 	/**
-	 *  找模块的
+	 *  find module
 	 * @param url
-	 * @return
+	 * @return self
 	 */
 	private RouterCableInfo findCableInfo(String url){
 
@@ -146,9 +153,9 @@ public class RouterHub {
 		String group = "";
 		String path = "";
 
-		// 找模块
+		// find module
 		if(m_RouterCables != null){
-			// 一般模块不会太多
+			// it won't too much
 			for(int i = 0; i < m_RouterCables.size(); i++){
 				RouterCable cable =  m_RouterCables.get(i);
 				if(cable != null){
@@ -173,8 +180,8 @@ public class RouterHub {
 	}
 
 	/**
-	 *  找子hub
-	 * @return
+	 *  find child hub
+	 * @return self
 	 */
 	private RouterCableInfo findChildRouterCableInfo(String url){
 		RouterCableInfo info = null;

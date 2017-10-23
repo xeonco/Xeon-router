@@ -1,0 +1,89 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+def siteUrl = 'https://github.com/xeonco/Xeon-router'      // 项目的主页
+def gitUrl = 'https://github.com/xeonco/Xeon-router.git'   // Git仓库的url
+def issuesUrl = 'https://github.com/xeonco/Xeon-router/issues'
+def groupName = "cn.xeon"
+group = groupName
+// 根节点添加
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        // need to bintray.com create a repo name maven
+        pom {
+            project {
+                packaging 'aar'
+                name 'Xeon-router'
+                // need the same as library name
+                artifactId "router"
+                groupId groupName
+                url siteUrl
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'xeon-co'
+                        name 'xeon-co'
+                        email 'jacklam200@gmail.com'
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }.writeTo("$buildDir/poms/pom-default.xml")
+    }
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+
+bintray {
+    Properties properties = new Properties()
+    boolean hasLocalFile = false
+    if (project.rootProject.file('local.properties').exists()) {
+        hasLocalFile = true
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    }
+    user = hasLocalFile ? properties.getProperty("bintray.user") : ""
+    key = hasLocalFile ? properties.getProperty("bintray.apikey") : ""
+    println user
+    println key
+    configurations = ['archives']
+    pkg {
+        repo = "maven"
+        name = "Xeon-router"
+        websiteUrl = siteUrl
+        issueTrackerUrl = issuesUrl
+        vcsUrl = gitUrl
+        labels = ["Android", "Router"]
+        licenses = ["Apache-2.0"]
+        publicDownloadNumbers = true
+        publish = true
+    }
+}

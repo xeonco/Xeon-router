@@ -28,26 +28,51 @@
 #### 三、基础功能
 1. 添加依赖和配置
 ``` gradle
+project build.gradle
+buildscript {
+    repositories {
 
+        maven{ url 'https://dl.bintray.com/xeon-co/maven'}
+        jcenter()
+        mavenCentral()
+    }
+    
+    .......
+}
+
+module build.gradle
+compile 'cn.xeon:router:0.2@aar'
 ```
 
 2. 添加注解
 ``` java
 
+eg.
+public class ModuleBRouterCable extends RouterCable {
+
+	@Route(path = "cn.xeon.router.modulea.RouterAActivity")
+	public static final String ROUTER_MODULEA_ACTIVITY = "moduleb";
+}
+
+
 ```
 
 3. 初始化SDK
 ``` java
-
+MainRouterHub.getInstance().addCable(new ModuleBRouterCable());
 ```
 
 4. 发起路由操作
 ``` java
 
+MainRouterHub.getInstance().plug(ModuleBRouterCable.ROUTER_MODULEA_ACTIVITY).navi(ModuleBActivity.this);
+
 ```
 
 5. 添加混淆规则(如果使用了Proguard)
 ``` 
+-keep class **$$viewInject** { *; }
+-keep class cn.xeon.annotation.** { *; }
 
 ```
 

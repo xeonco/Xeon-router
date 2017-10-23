@@ -7,7 +7,6 @@ import cn.xeon.annotation.route.template.IConnector;
  *  router cable
  * @author LinZaixiong
  * @version 1.0
- * @created 19-10-2017 10:56:09
  */
 public class RouterCable {
 
@@ -18,26 +17,29 @@ public class RouterCable {
 	}
 
 	/**
-	 * 获取group 类型
+	 * get group value
 	 * 
-	 * @param key  值
+	 * @param key  key
+	 * @return group value
 	 */
 	public String getGroup(String key){
 		return m_IConnector != null ? m_IConnector.getGroup(this, key) : "";
 	}
 
 	/**
-	 * 获取path路径
+	 * get path value
 	 * 
-	 * @param key    值
+	 * @param key   key
+	 * @return path value
 	 */
 	public String getPath(String key){
 		return m_IConnector != null ? m_IConnector.getPath(this, key) : "";
 	}
 
 	/**
-	 * 找出需要注入的对象
-	 * @param target    找到要注入的对象
+	 *  find inject object
+	 * @param target    ind inject object
+	 * @return  IConnector object
 	 */
 	protected IConnector findInjectObj(Object target){
 

@@ -10,25 +10,24 @@ import android.os.Bundle;
 import android.util.SparseArray;
 
 /**
- * router cable 信息
+ * router cable info
  * @author LinZaixiong
  * @version 1.0
- * @created 19-10-2017 10:56:10
  */
 public class RouterCableInfo {
 
 	/**
-	 *  类型
+	 *  group type
 	 */
 	private String group;
 
 	/**
-	 *  路径
+	 *  path
 	 */
 	private String path;
 
 	/**
-	 *  router 提供器
+	 *  router supplier
 	 */
 	public RouterSupply m_RouterSupply;
 
@@ -37,9 +36,10 @@ public class RouterCableInfo {
 	}
 
 	/**
-	 *  执行导航
+	 *  navigation
 	 *
-	 * @param context   上下文
+	 * @param context   context
+	 * @return  router object
 	 */
 	public Object navi(Context context){
 		return m_RouterSupply != null ? m_RouterSupply.on(context, this) : null;
@@ -49,6 +49,7 @@ public class RouterCableInfo {
 	 * set a supply
 	 *
 	 * @param supply    a supplier
+	 * @return self
 	 */
 	public RouterCableInfo supply(RouterSupply supply){
 		m_RouterSupply = supply;
@@ -56,18 +57,34 @@ public class RouterCableInfo {
 	}
 
 
+	/**
+	 *  get group value
+	 * @return group value
+	 */
 	public String getGroup() {
 		return group;
 	}
 
+	/**
+	 *  set group value
+	 * @param group
+	 */
 	public void setGroup(String group) {
 		this.group = group;
 	}
 
+	/**
+	 *  get path value
+	 * @return path value
+	 */
 	public String getPath() {
 		return path;
 	}
 
+	/**
+	 *  set path value
+	 * @param path
+	 */
 	public void setPath(String path) {
 		this.path = path;
 	}
@@ -77,6 +94,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a charsequence
+	 * @return self
 	 */
 	public RouterCableInfo withCharSequence(String key, CharSequence value){
 		return this;
@@ -87,6 +105,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a charsequece array object
+	 * @return self
 	 */
 	public RouterCableInfo withCharSequenceArray(String key, CharSequence value){
 		return this;
@@ -97,6 +116,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String ,or null
 	 * @param value    a float array object
+	 * @return self
 	 */
 	public RouterCableInfo withFloatArray(String key, float[] value){
 		return this;
@@ -107,6 +127,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a char array object
+	 * @return self
 	 */
 	public RouterCableInfo withCharArray(String key, char[] value){
 		return this;
@@ -117,6 +138,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a short array
+	 * @return self
 	 */
 	public RouterCableInfo withShortArray(String key, short[] value){
 		return this;
@@ -127,6 +149,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key
 	 * @param value    a byte array
+	 * @return self
 	 */
 	public RouterCableInfo withByteArray(String key, byte[] value){
 		return this;
@@ -137,6 +160,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a serializable value
+	 * @return self
 	 */
 	public RouterCableInfo withSerializable(String key, Serializable value){
 		return this;
@@ -147,6 +171,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    an arrayList object, or null
+	 * @return self
 	 */
 	public RouterCableInfo withCharSequenceArrayList(String key, ArrayList<CharSequence> value){
 		return this;
@@ -157,6 +182,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value
+	 * @return self
 	 */
 	public RouterCableInfo withStringArrayList(String key, ArrayList<String> value){
 		return this;
@@ -167,6 +193,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value
+	 * @return self
 	 */
 	public RouterCableInfo withIntegerArrayList(String key, ArrayList<Integer> value){
 		return this;
@@ -177,6 +204,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a SparseArray of Parcelable objects, or null
+	 * @return self
 	 */
 	public RouterCableInfo withSparseParcelableArray(String key, SparseArray<? extends Parcelable> value){
 		return this;
@@ -187,6 +215,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value
+	 * @return self
 	 */
 	public RouterCableInfo withParcelableArrayList(String key, ArrayList<? extends Parcelable> value){
 		return this;
@@ -199,6 +228,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a Parcelable ojbect, or null
+	 * @return self
 	 */
 	public RouterCableInfo withParcelable(String key, Parcelable value){
 		return this;
@@ -211,6 +241,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a float
+	 * @return self
 	 */
 	public RouterCableInfo withFloat(String key, float value){
 		return this;
@@ -221,6 +252,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a char
+	 * @return self
 	 */
 	public RouterCableInfo withChar(String key, char value){
 		return this;
@@ -231,6 +263,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String. or null
 	 * @param value    a byte
+	 * @return self
 	 */
 	public RouterCableInfo withByte(String key, byte value){
 		return this;
@@ -241,6 +274,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a double
+	 * @return self
 	 */
 	public RouterCableInfo withDouble(String key, double value){
 		return this;
@@ -251,6 +285,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value     a long
+	 * @return self
 	 */
 	public RouterCableInfo withLong(String key, long value){
 		return this;
@@ -261,6 +296,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String,or null
 	 * @param value    an int
+	 * @return self
 	 */
 	public RouterCableInfo withInt(String key, int value){
 		return this;
@@ -271,6 +307,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String,or null
 	 * @param value    a short
+	 * @return self
 	 */
 	public RouterCableInfo withShort(String key, short value){
 		return this;
@@ -282,16 +319,18 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value    a boolean
+	 * @return self
 	 */
 	public RouterCableInfo withBoolean(String key, boolean value){
 		return this;
 	}
 
 	/**
-	 * ��string
+	 * string
 	 * 
 	 * @param key    key value
 	 * @param value    value
+	 * @return self
 	 */
 	public RouterCableInfo withString(String key, String value){
 		return this;
@@ -302,6 +341,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    key value
 	 * @param value   a object
+	 * @return self
 	 */
 	public RouterCableInfo withObject(String key, Object value){
 		return this;
@@ -310,6 +350,7 @@ public class RouterCableInfo {
 	/**
 	 *  带bundle
 	 * @param bundle    bundle
+	 * @return self
 	 */
 	public RouterCableInfo with(Bundle bundle){
 		return this;
@@ -320,6 +361,7 @@ public class RouterCableInfo {
 	 * 
 	 * @param key    a String, or null
 	 * @param value
+	 * @return self
 	 */
 	public RouterCableInfo withParcelableArray(String key, Parcelable[] value){
 		return this;

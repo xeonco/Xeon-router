@@ -7,7 +7,6 @@ import android.content.Intent;
  *  default router supply, now only support activity element
  * @author LinZaixiong
  * @version 1.0
- * @created 19-10-2017 10:56:09
  */
 public class DefaultRouterSupply implements RouterSupply {
 
@@ -16,10 +15,11 @@ public class DefaultRouterSupply implements RouterSupply {
 	}
 
 	/**
-	 *  启动 supply
+	 *  start supply
 	 * 
-	 * @param context    上下文
+	 * @param context    context
 	 * @param cableInfo    router cable info
+	 * @return object
 	 */
 	@Override
 	public Object on(Context context, RouterCableInfo cableInfo){

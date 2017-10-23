@@ -6,14 +6,13 @@ import android.content.Context;
  * router supplier
  * @author LinZaixiong
  * @version 1.0
- * @created 19-ʮ��-2017 10:56:10
  */
 public interface RouterSupply {
 
 	/**
-	 *  supply 启动
+	 *  supply start
 	 * 
-	 * @param context    上下文
+	 * @param context    context
 	 * @param cableInfo    router cable info
 	 * @return  object
 	 */
